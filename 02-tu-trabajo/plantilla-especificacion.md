@@ -221,8 +221,6 @@ Prestamo 0..1 --- 1 Multa
 
 ## 6. Decisiones tomadas (lo que el correo no dice)
 
-## 6. Decisiones tomadas (lo que el correo no dice)
-
 ### D1 — Separación entre Libro y Ejemplar
 - **Contexto:** el correo menciona libros con varios ejemplares, pero no define estructura.
 - **Decisión:** modelar `Libro` y `Ejemplar` como entidades separadas.
