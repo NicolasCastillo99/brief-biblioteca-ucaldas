@@ -4,7 +4,7 @@
 
 ## Prompt #1
 
-**Fecha y hora:** 2026-05-12 14:35
+**Fecha y hora:** 2026-05-12 17:05
 
 **Propósito en una línea:** Crear una API REST completa en FastAPI para gestionar préstamos de libros en una biblioteca universitaria con datos en memoria.
 
@@ -32,8 +32,8 @@ Creó 3 archivos: `main.py` (API con FastAPI incluyendo 6 endpoints principales)
 
 **¿La respuesta cumplió con lo que pedí?**
 
-- [x] Completamente.
-- [ ] Parcialmente. Faltó: [...]
+- [] Completamente.
+- [x] Parcialmente. Faltó: [Agregar una estructura de proyecto]
 - [ ] No, se desvió. Hizo: [...]
 
 **¿La acepté tal cual o la modifiqué?**
@@ -45,6 +45,6 @@ Creó 3 archivos: `main.py` (API con FastAPI incluyendo 6 endpoints principales)
 
 **¿Qué aprendí de esta interacción?**
 
-La IA entiende bien requerimientos técnicos específicos (FastAPI, datos en memoria) cuando se menciona el framework. Incluye automáticamente features útiles sin solicitarlos (modelos Pydantic, validaciones, documentación Swagger). Un prompt conciso pero con tecnologías explícitas genera respuestas de calidad. La decisión de precargar datos de ejemplo facilita testing inmediato.
+La IA entiende bien requerimientos técnicos específicos (FastAPI, datos en memoria) cuando se menciona el framework, incluye automáticamente features útiles sin solicitarlos (modelos Pydantic, validaciones, documentación Swagger), un prompt conciso pero con tecnologías explícitas genera respuestas de calidad. La decisión de precargar datos de ejemplo facilita testing inmediato.
 
 ---
