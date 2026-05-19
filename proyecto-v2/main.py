@@ -1,26 +1,32 @@
 import uvicorn
 from fastapi import FastAPI
-from app.config import DEBUG, PORT, HOST
-from app.routes import libros, prestamos, estudiantes
 
-# Crear aplicación FastAPI
+from app.config import DEBUG, HOST, PORT
+from app.database import DatabaseManager
+from app.routes import estudiantes, libros, prestamos
+
 app = FastAPI(
-    title="Sistema de Préstamo de Libros",
-    description="API REST para gestión de préstamos en biblioteca universitaria",
+    title="Sistema de Prestamo de Libros",
+    description="API REST para gestion de prestamos en biblioteca universitaria",
     version="1.0.0",
 )
 
-# Registrar routers
 app.include_router(libros.router)
 app.include_router(prestamos.router)
 app.include_router(estudiantes.router)
 
 
+@app.on_event("startup")
+def startup() -> None:
+    """Inicializar SQLite y crear tablas automaticamente."""
+    DatabaseManager.initialize_database()
+
+
 @app.get("/", tags=["root"])
 def read_root():
-    """Endpoint raíz de la API"""
+    """Endpoint raiz de la API."""
     return {
-        "mensaje": "Bienvenido al Sistema de Préstamo de Libros",
+        "mensaje": "Bienvenido al Sistema de Prestamo de Libros",
         "docs": "/docs",
         "redoc": "/redoc",
     }
@@ -28,7 +34,7 @@ def read_root():
 
 @app.get("/health", tags=["health"])
 def health_check():
-    """Health check del servidor"""
+    """Health check del servidor."""
     return {"status": "ok"}
 
 
