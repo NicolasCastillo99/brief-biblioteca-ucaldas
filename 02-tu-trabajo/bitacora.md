@@ -1,11 +1,10 @@
-## Chatbot Ollama — Registro
+### Chatbot Ollama — Registro
 
 ### Modelo usado
-- Nombre: `qwen2.5-coder:7b`
-- RAM consumida aproximada: `8 GB`
+- Nombre: `llama3.2:3b`
+- RAM consumida aproximada: `2,5 GB`
 
-```markdown
-# Bitácora
+### Preguntas útiles que generó el chatbot
 
 ## Pregunta 1
 **Pregunta:** "crea los datos de prueba base para todas las reglas: un estudiante pregrado EST-PRE-01, uno posgrado EST-POS-01, un libro normal LIB-001 con 6 ejemplares y un libro de alta demanda LIB-002 con 1 ejemplar"
