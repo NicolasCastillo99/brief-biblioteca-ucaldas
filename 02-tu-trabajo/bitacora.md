@@ -518,7 +518,7 @@ else:
 Este código verifica si la fecha de devolución esperada coincide con la fecha actual y también si la fecha de devolución solicitada es posterior a la fecha de devolución esperada. Si es así, lanza un error de validación.
 
 ---
-```
+
 
 
 
