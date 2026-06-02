@@ -146,16 +146,19 @@ RN7. La renovación de un préstamo se deniega si otro estudiante está esperand
 RN8. La multa por devolución tardía es de 2000 pesos por día de retraso por cada libro.
 
 ENDPOINTS CONOCIDOS:
-- GET  /api/libros                              Catálogo de libros
-- POST /api/libros                              Crear libro
-- POST /api/libros/:id/ejemplares               Crear ejemplar
-- GET  /api/estudiantes                         Listar estudiantes
-- POST /api/estudiantes                         Crear estudiante
-- GET  /api/estudiantes/:id/historial           Historial de préstamos
-- POST /api/prestamos                           Crear préstamo
-- GET  /api/prestamos                           Listar préstamos activos
-- PUT  /api/prestamos/:id/devolucion            Registrar devolución
-- PUT  /api/prestamos/:id/renovar               Renovar préstamo
+- GET  /libros                                  Catálogo de libros
+- GET  /libros/disponibles                      Libros con ejemplares disponibles
+- GET  /libros/{libro_id}                       Obtener detalles de un libro
+- POST /libros                                  Crear libro
+- POST /estudiantes                             Crear estudiante
+- GET  /estudiantes/{estudiante_id}             Obtener detalles de un estudiante
+- GET  /estudiantes/{estudiante_id}/prestamos  Obtener préstamos activos
+- GET  /estudiantes/{estudiante_id}/historial  Historial completo de préstamos
+- POST /prestamos                               Crear préstamo
+- POST /prestamos/{prestamo_id}/devolver        Registrar devolución
+- POST /prestamos/{prestamo_id}/renovar        Renovar préstamo
+- GET  /prestamos/vencidos                      Listar préstamos vencidos
+- GET  /prestamos/{prestamo_id}                 Obtener detalles de un préstamo
 
 INSTRUCCIONES DE COMPORTAMIENTO:
 - Cuando el usuario pida probar una regla, genera el comando curl exacto para hacerlo.
