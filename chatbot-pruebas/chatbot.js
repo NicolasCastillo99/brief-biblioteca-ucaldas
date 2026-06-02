@@ -1,9 +1,9 @@
 const readline = require("readline");
 const { execSync } = require("child_process");
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://localhost:8000";
 const OLLAMA_URL = "http://localhost:11434/api/chat";
-const MODELO = "qwen2.5-coder:7b"; // cambia si usaste otro
+const MODELO = "llama3.2:3b"; // cambia si usaste otro
 
 const SYSTEM_PROMPT = `
 Eres un asistente de QA especializado en probar una API REST de biblioteca universitaria.

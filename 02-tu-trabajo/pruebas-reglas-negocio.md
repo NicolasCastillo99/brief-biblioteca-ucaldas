@@ -416,18 +416,34 @@ Llena esta tabla con lo que observaste al correr cada prueba en ambas versiones.
 
 | Prueba                         | Regla | Esperado        | Sin IA — HTTP | Sin IA — body util | Con IA — HTTP | Con IA — body util |
 |--------------------------------|-------|-----------------|---------------|--------------------|---------------|--------------------|
-| RN1-B cuarto prestamo pregrado | RN1   | 409             | proyecto-v1 (409) | proyecto-v1 (Si, devuelve limite_prestamos) | proyecto-v2 (POST /prestamos, 409) | proyecto-v2 (Si, devuelve limite_prestamos_alcanzado) |
-| RN2-B sexto prestamo posgrado  | RN2   | 409             | proyecto-v1 (409) | proyecto-v1 (Si, devuelve limite_prestamos) | proyecto-v2 (POST /prestamos, 409) | proyecto-v2 (Si, devuelve limite_prestamos_alcanzado) |
-| RN5-B ejemplar ya prestado     | RN5   | 409             | proyecto-v1 (409) | proyecto-v1 (Si, devuelve ejemplar_no_disponible) | proyecto-v2 (POST /prestamos, 409) | proyecto-v2 (Si, devuelve ejemplar_no_disponible) |
-| RN6-A plazo libro normal       | RN6   | fecha + 15 dias | proyecto-v1 (201) | proyecto-v1 (Si, devuelve plazo 15 y fechaVencimiento +15 dias) | proyecto-v2 (POST /prestamos, 201) | proyecto-v2 (Si, devuelve fecha_devolucion_esperada 2026-06-03, +15 dias) |
-| RN6-B plazo alta demanda       | RN6   | fecha + 3 dias  | proyecto-v1 (201) | proyecto-v1 (Si, devuelve plazo 3 y fechaVencimiento +3 dias) | proyecto-v2 (POST /prestamos, 201) | proyecto-v2 (Si, devuelve fecha_devolucion_esperada 2026-05-22, +3 dias) |
-| RN3 prestamo con vencido       | RN3   | 409             | proyecto-v1 (409) | proyecto-v1 (Si, devuelve prestamo_vencido) | proyecto-v2 (POST /prestamos, 409) | proyecto-v2 (Si, devuelve prestamos_vencidos) |
-| RN4-B prestamo con multa       | RN4   | 409             | proyecto-v1 (No completado) | proyecto-v1 (No se ejecuto con ID real de devolucion; siguio devolviendo prestamo_vencido) | proyecto-v2 (POST /prestamos, 409) | proyecto-v2 (Si, devuelve multas_pendientes) |
-| RN8 calculo de multa           | RN8   | N x 2000        | proyecto-v1 (No completado) | proyecto-v1 (No se reemplazo ID_DEL_PRESTAMO por el id real 22; no se calculo multa en esta corrida) | proyecto-v2 (POST /prestamos/{id}/devolver, 200) | proyecto-v2 (No, la devolucion no devuelve la multa; se verifico con GET /estudiantes: multas_pendientes 6000.0) |
-| VAL-1 body vacio               | —     | 400             | proyecto-v1 (400) | proyecto-v1 (Si, indica campos requeridos estudianteId y ejemplarId) | proyecto-v2 (POST /prestamos, 422) | proyecto-v2 (Si, indica campos requeridos estudiante_id y ejemplar_id) |
-| VAL-2 estudiante inexistente   | —     | 404             | proyecto-v1 (404) | proyecto-v1 (Si, devuelve estudiante_no_encontrado) | proyecto-v2 (POST /prestamos, 404) | proyecto-v2 (Si, devuelve \"Estudiante con ID 'NO-EXISTE-999' no encontrado\") |
-| VAL-3 ejemplar inexistente     | —     | 404             | proyecto-v1 (404) | proyecto-v1 (Si, devuelve ejemplar_no_encontrado) | proyecto-v2 (POST /prestamos, 404) | proyecto-v2 (Si, devuelve \"Ejemplar con ID 'NO-EXISTE-999' no encontrado\") |
-| VAL-4 tipo incorrecto          | —     | 400             | proyecto-v1 (400) | proyecto-v1 (Si, reporta error de validacion de tipos) | proyecto-v2 (POST /prestamos, 422) | proyecto-v2 (Si, reporta que estudiante_id y ejemplar_id deben ser string) |
+| RN1-B cuarto prestamo pregrado | RN1 | 409 | proyecto-v1 (409) | Si, devuelve limite_prestamos |
+| RN2-B sexto prestamo posgrado | RN2 | 409 | proyecto-v1 (409) | Si, devuelve limite_prestamos |
+| RN5-B ejemplar ya prestado | RN5 | 409 | proyecto-v1 (409) | Si, devuelve ejemplar_no_disponible |
+| RN6-A plazo libro normal | RN6 | fecha + 15 dias | proyecto-v1 (201) | Si, devuelve plazo 15 y fechaVencimiento +15 dias |
+| RN6-B plazo alta demanda | RN6 | fecha + 3 dias | proyecto-v1 (201) | Si, devuelve plazo 3 y fechaVencimiento +3 dias |
+| RN3 prestamo con vencido | RN3 | 409 | proyecto-v1 (409) | Si, devuelve prestamo_vencido |
+| RN4-B prestamo con multa | RN4 | 409 | proyecto-v1 (No completado) | No se ejecuto con ID real de devolucion; siguio devolviendo prestamo_vencido |
+| RN8 calculo de multa | RN8 | N x 2000 | proyecto-v1 (No completado) | No se reemplazo ID_DEL_PRESTAMO por el id real 22; no se calculo multa en esta corrida |
+| VAL-1 body vacio | — | 400 | proyecto-v1 (400) | Si, indica campos requeridos estudianteId y ejemplarId |
+| VAL-2 estudiante inexistente | — | 404 | proyecto-v1 (404) | Si, devuelve estudiante_no_encontrado |
+| VAL-3 ejemplar inexistente | — | 404 | proyecto-v1 (404) | Si, devuelve ejemplar_no_encontrado |
+| VAL-4 tipo incorrecto | — | 400 | proyecto-v1 (400) | Si, reporta error de validacion de tipos |
+
+
+| Prueba                         | Regla | Esperado        | Sin IA — HTTP | Sin IA — body util | Con IA — HTTP | Con IA — body util |
+|--------------------------------|-------|-----------------|---------------|--------------------|---------------|--------------------|
+| RN1-B cuarto prestamo pregrado | RN1 | 409 | proyecto-v2 (POST /prestamos, 409) | Si, devuelve limite_prestamos_alcanzado |
+| RN2-B sexto prestamo posgrado | RN2 | 409 | proyecto-v2 (POST /prestamos, 409) | Si, devuelve limite_prestamos_alcanzado |
+| RN5-B ejemplar ya prestado | RN5 | 409 | proyecto-v2 (POST /prestamos, 409) | Si, devuelve ejemplar_no_disponible |
+| RN6-A plazo libro normal | RN6 | fecha + 15 dias | proyecto-v2 (POST /prestamos, 201) | Si, devuelve fecha_devolucion_esperada 2026-06-03, +15 dias |
+| RN6-B plazo alta demanda | RN6 | fecha + 3 dias | proyecto-v2 (POST /prestamos, 201) | Si, devuelve fecha_devolucion_esperada 2026-05-22, +3 dias |
+| RN3 prestamo con vencido | RN3 | 409 | proyecto-v2 (POST /prestamos, 409) | Si, devuelve prestamos_vencidos |
+| RN4-B prestamo con multa | RN4 | 409 | proyecto-v2 (POST /prestamos, 409) | Si, devuelve multas_pendientes |
+| RN8 calculo de multa | RN8 | N x 2000 | proyecto-v2 (POST /prestamos/{id}/devolver, 200) | No, la devolucion no devuelve la multa; se verifico con GET /estudiantes: multas_pendientes 6000.0 |
+| VAL-1 body vacio | — | 400 | proyecto-v2 (POST /prestamos, 422) | Si, indica campos requeridos estudiante_id y ejemplar_id |
+| VAL-2 estudiante inexistente | — | 404 | proyecto-v2 (POST /prestamos, 404) | Si, devuelve "Estudiante con ID 'NO-EXISTE-999' no encontrado" |
+| VAL-3 ejemplar inexistente | — | 404 | proyecto-v2 (POST /prestamos, 404) | Si, devuelve "Ejemplar con ID 'NO-EXISTE-999' no encontrado" |
+| VAL-4 tipo incorrecto | — | 400 | proyecto-v2 (POST /prestamos, 422) | Si, reporta que estudiante_id y ejemplar_id deben ser string |
 
 **Columna "body util":** escribe `Si` si la respuesta incluye un mensaje que explica por que fallo, o `No` si solo devuelve el codigo sin explicacion.
 
